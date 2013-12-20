@@ -1,0 +1,2 @@
+user: c370_s06
+pass: QnkdAuMP

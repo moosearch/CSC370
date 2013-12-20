@@ -1,0 +1,7 @@
+Wesley Chow
+V00727646
+Dec 4, 2013
+CSC370
+Assignment 4
+
+Purpose of file: Describes functionality created in phase 5.

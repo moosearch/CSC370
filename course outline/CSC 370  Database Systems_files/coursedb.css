@@ -1,0 +1,569 @@
+body { background-color: #fff; color: #333;}
+
+html, body {
+  margin: 0;
+  padding: 0;
+/*  position: absolute;*/
+  top: 0;
+/*  left: 0;*/
+}
+
+body, p, ol, ul, td, pre {
+  font-family: verdana, arial, helvetica, sans-serif;
+/*font-family: Trebuchet MS, Verdana, Geneva, sans-serif;*/
+/*    font-size:    x-small;      */
+    /* false value for WinIE4/5 */
+/*    voice-family: "\"}\"";   */
+    /* trick WinIE4/5 into thinking rule is over */
+/*    voice-family: inherit;   */
+    /* recover from trick */
+    font-size: 75%;
+
+}
+
+a { 
+  color: #000;
+}
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+p, ol, ul, pre { font-size: 100%; }
+form, form:hover, form:active {
+    padding: 0;
+    margin: 0;
+}
+.nice_link a{ 
+  color: #003366;
+  font-size: 125%;
+  font-weight: bold;
+}
+.nice_link a:visited { color: #666; }
+.nice_link a:hover { color: #fff; background-color:#000; }
+h1 {
+    text-align: center;
+    background-color: #FFA485;    
+    /*background-color: #D8D075;    */
+    border-top: solid 2px #F63;
+    border-bottom: solid 2px #F63;
+}
+h2 {
+    text-align: center;
+}
+h3 {
+	color: #003366;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#ErrorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#ErrorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#ErrorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#ErrorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
+table {
+	border: none;
+	border-spacing: 0px;
+	border-collapse: seperate;
+	padding: 2px;
+}
+table.grades {
+	border: none;
+	border-collapse: collapse;	
+	border-spacing: 0px;
+/*	padding: 5px;	*/
+}
+table.add_fields {
+	border: solid;
+	border-collapse: collapse;	
+	border-spacing: 0px;
+/*	padding: 5px;	*/
+}
+th {
+    padding-right: 5px; 
+}
+td {
+    padding-bottom: 0px;
+/*    padding-right: 5px; */
+}
+th.sortable {
+        cursor: pointer;
+}
+.title_cell {
+        font-size: 100%;
+        font-weight: bold;
+        color: #FFFFFF;
+        background-color: #003366;
+        text-align: left;
+}
+
+.title_cell a {
+        color: #FFFFFF;
+}
+.title_cell a:hover {
+        color: #FFFFFF;
+        background-color: #4477FF;
+}
+.title_cell a:visited {
+        color: #999999;
+}
+.border_row {
+        font-size: 100%;
+        font-weight: bold;
+        color: #FFFFFF;
+        border-bottom: 2px solid #003366;
+}
+
+td.cell {
+    color: #000000;
+    background-color: #D8DCF5;
+    border-bottom: 1px solid #6699CC;
+}
+td.course_cell {
+    color: #000000;
+    background-color: #FFFFFF;
+    /*background-color: #D8DCF5;*/
+    /*background-color: #FFCC84;*/
+    vertical-align: top;
+    margin-top: 0; 
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+tr.course_row {
+    color: #000000;
+    /*background-color: #D8DCF5;*/
+    /*background-color: #FFCC84;*/
+    background-color: #FFFFFF;
+    vertical-align: top;
+    margin-top: 0; 
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+td.admin_title_cell,
+th.admin_title_cell {
+        color: #FFFFFF;
+        background-color: #006633;
+        font-size: 75%;
+        text-align: left;
+}
+tr.admin_cell {
+        color: #000000;
+        background-color: #D8F5DC;
+}
+td.admin_cell {
+        color: #000000;
+        background-color: #D8F5DC;
+}
+td.list_action_title {
+    font-size: 100%;
+    font-weight: bold;
+/*    color: #003366;*/
+/*    background-color: #D8D075; */
+    color: #EEFFC4;
+    background-color: #336600;
+   /* border-left: 3px dotted #EEFFC4;
+    border-right: 3px dotted #EEFFC4;*/
+}
+td.admin_action_title {
+    font-size: 100%;
+    font-weight: bold;
+/*    color: #003366;*/
+/*    background-color: #D8D075; */
+    color: #F7E5BD;
+    background-color: #663300;
+}
+tr.department_list_title {
+    font-size: 125%;
+    font-weight: bold;
+/*    color: #003366;*/
+/*    background-color: #D8D075; */
+    color: #000000;
+    background-color: #D8D075;
+}
+tr.outline_list_header {
+    font-size: 100%;
+    font-weight: bold;
+/*    color: #003366;*/
+/*    background-color: #D8D075; */
+    color: #FFFFFF;
+    background-color: #003366;
+}
+tr.outline_list_header a {
+    color: #FFFFFF;
+}
+td.course_subtitle {
+    font-size: 100%;
+    color: #003366;
+    background-color: #B8BCD5;
+}
+.course_subtitle {
+    font-size: 100%;
+    color: #003366;
+    background-color: #B8BCD5;
+}
+.course_spacer {
+	border-top: 1px dashed #000000;
+    /*background-color: #D8DCF5;	*/
+    background-color: #FFCC84;	
+}
+.course_desc_heading {
+    font-size: 13px;
+	padding-bottom: 1em;
+	border-top: 1px dashed #000000;
+	vertical-align: top;
+	color: #003366;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.course_edit_heading {
+    font-size: 13px;
+	padding-bottom: 0em;
+	vertical-align: top;
+	color: #003366;
+ /*   background-color: #FFCC84;	*/
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.course_desc_detail {
+	padding-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	vertical-align: top;
+}
+.course_desc_edit {
+/*	border-top: 1px dashed #000000;    */
+/*    background-color: #D8DCF5;*/
+	padding-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	vertical-align: top;
+}
+.course_edit_textbox {
+/*	border-top: 1px dashed #000000;    */
+/*    background-color: #D8DCF5;*/
+/*    background-color: #B8BCD5;*/
+	padding-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	vertical-align: top;
+}
+.help_spacer_cell {
+	border-top: 1px dashed #00AA00;
+}
+.heading {
+    font-size: 13px;
+    font-weight: bold;
+}
+.help_instruction {
+/*    font-size: 13px; */
+    font-weight: bold;    
+}
+.help_example {
+     background-color: #EEFFE5;
+}
+.help_em {
+     font-size:14px;
+     background-color: #FFEEE5;
+}
+.example {
+    background-color: #DDDDDD;
+    border-top: 1px dashed #444444;
+    border-bottom: 1px dashed #444444;
+    border-left: 1px dashed #444444;
+    border-right: 1px dashed #444444;
+}
+.preview {
+/*    background-color: #DDCCDD; */
+    color: #001144;
+/*    background-color: #FFE0E5; */
+/*    background-color: #FECB60; */
+    background-color: #FFDD90;
+    border-top: 1px dashed #AA00AA;
+    border-bottom: 1px dashed #AA00AA;
+    border-left: 1px dashed #AA00AA;
+    border-right: 1px dashed #AA00AA;
+}
+.custom_fields {
+    background-color: #D8DCF5;    
+/*    background-color: #DDDDEE;*/
+/*    border-top: 1px dashed #AA00AA;*/
+    border-bottom: 1px dashed #AA00AA;
+    border-left: 1px dashed #AA00AA;
+    border-right: 1px dashed #AA00AA;
+}
+.regular_fields {
+    background-color: #D8DCF5;    
+/*    border-top: 1px dashed #AA00AA;*/
+    border-bottom: 1px dashed #003366;
+}
+.unpublished {
+	color: #003366;
+    font-size: large;
+	text-decoration: none;
+	font-style: italic;
+}
+.help {
+	border-collapse: collapse;
+    border-top: 1px dashed #00AA00;
+    border-bottom: 1px dashed #00AA00;
+    border-left: 1px dashed #00AA00;
+    border-right: 1px dashed #00AA00;
+    background-color: #DDFFD5;
+	padding-bottom: 10em;    
+}
+.grade_letter {
+    color: #003366;
+    text-align: center;
+}
+.grade_number {
+    color: #225588;
+}
+.grade_dots {
+    color: #225588;
+}
+.emphasis {
+	color: #003366;
+	text-decoration: none;
+	font-style: italic;
+}
+.add_field_text {
+    font-weight: bold;
+}
+.add_field_text a {
+    color: #001144;
+    text-decoration: none;  
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px outset #660;
+    padding: 4px;          
+}
+.add_field_text a:hover {
+    color: #AA1144;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px inset #660;
+    padding: 4px;       
+}
+.preview_title {
+    font-size: 180%;
+    font-weight: bold;    
+}
+.buttonCreate {
+    background-color: #118833;
+    color: #FFFFFF;
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px outset #660;
+    padding: 4px;
+    cursor: pointer;
+}
+.buttonCreate:hover {
+    background-color: #006622;
+    color: #EEFFEE;
+}
+.buttonCreate:active {
+    background-color: #118833;
+    color: #FFFFFF;
+    border: 2px inset #660;
+}
+.redButton {
+    color: #FFFFFF;
+    background-color: #BB3222;
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px outset #660;
+    padding: 4px;
+    cursor: pointer;
+}
+.redButton:hover {
+    color: #FFEEEE;
+    background-color: #992111;
+}
+.redButton:active {
+    color: #FFFFFF;
+    background-color: #BB3222;
+    border: 2px inset #660;
+}
+.killButton {
+    color: #BB3222;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px outset #F00;
+    cursor: pointer;
+}
+.killButton:hover {
+    background-color: #FFFFEE;
+}
+.killButton:active {
+    background-color: #FFFFEE;
+    border: 2px inset #F00;
+}
+.blueButton, .bluebuttonLink a {
+    background-color: #333399;
+    color: #EEEEFF;        
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px outset #660;
+    padding: 4px;    
+}
+.blueButton:hover, .blueButtonLink a:hover {
+    background-color: #111177;
+}
+.blueButton:active, .blueButtonLink a:active {
+    background-color: #333399;
+    border: 2px inset #660;
+}
+.greenButton a {
+    color: #006622;
+    background-color: #EEFFEE;
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px outset #660;
+    padding: 4px;    
+}
+.greenButton a:hover {
+    color: #006622;
+    background-color: #FFFFEE;
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px outset #660;
+    padding: 4px;    
+}
+.greenButton a:active {
+    color: #006622;
+    background-color: #FFFFEE;
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: bold;
+    border: 2px inset #660;
+    padding: 4px;    
+}
+.form_instruction {
+    color: #000000;
+/*    font-size: 50%;*/
+    font-size: 10px;
+    line-height: 75%;
+    font-weight: normal;
+}
+.title_bar {
+    background-color: #FFCC84;
+    /*background-color: #FACDBE;*/
+    /*background-color: #D8DCF5;*/ /* original! */
+    font-weight: bold;
+/*    border-top: 1px solid #000000;*/
+/*    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;*/
+    border-bottom: 1px solid #B66B00;    
+}
+.list_heading {
+    color: #003366;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 125%;
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+}
+input.button-to {
+    font-family: verdana, arial, helvetica, sans-serif;
+    background-color: #FFFFFF;
+    /*background-color: #D8DCF5;*/
+    /*background-color: #FFCC84;*/
+    color: #000000;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+input.button-to-logout {
+    font-family: verdana, arial, helvetica, sans-serif;
+    /*background-color: #FFFFFF;*/
+    /*background-color: #D8DCF5;*/
+    background-color: #FFCC84;
+    color: #000000;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+input.button-to-admin {
+input.button-to-admin {
+    font-family: verdana, arial, helvetica, sans-serif;
+    background-color: #D8F5DC;
+    color: #000000;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+input.button-to-font {
+    background-color: #D8DCF5;
+    color: #000000;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;    
+    cursor: pointer;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+input.button-to-font:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}

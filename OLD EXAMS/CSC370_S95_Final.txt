@@ -1,0 +1,303 @@
+
+Computer Science Course Union Exam Data Base
+
+
+CSC 370 FINAL EXAM
+APRIL 1995
+INSTRUCTOR: J. ELLIS
+
+
+Question 1 [50 marks]
+The following questions refer to algorithms for computing relational 
+operations.
+
+a) Suppose you are computing a projection (pie symbol here) operation on 
+a relation. Why is the following procedure not necessarily sufficient to 
+get the job done?
+
+        for each record in the file representing the relation do
+                copy the attributes specified
+                in the projection into a new record; output the new record;
+        endfor
+
+b) What effect does this observation have on the time complexity of the 
+procedure?
+
+c) Consider the computation of an equi-join on two relations. Suppose 
+that neither of the attributes used in the join condition is set up as 
+an index into the corresponding file. Explain why the "sort/merge" 
+method will be superior to the "nested loop" method for all relations 
+over a certain size.
+
+d) Is sorting necessary to compute a Union operation efficiently? 
+Why/why not?
+
+e) Is sorting necessary to compute a Difference operation efficiently? 
+Why/why not?
+
+
+
+Question 2 [50 marks]
+Consider the following relational schemas:
+
+        Books (Title, Author, Pname, Bk_Num)
+        Publisher (Pname, Paddr, Pcity)
+        Borrower (BName, Addr, City, Card_Num)
+        Loan (Card_Num, Bk_Num, Date)
+
+Consider the SQL statement:
+
+        SELECT Title, BName, Date
+        FROM Books B, Borrower R, Loan L
+        WHERE B.Bk_Num = L.Bk_Num and L.Card_Num = R.Card_Num
+                        and L.Date < "1 Jan 1995"
+
+a) Draw the "canonical" parse tree for the evaluation of this statement. 
+Hint: Since
+Borrower and Books are linked through Loan, it makes sense to make Loan 
+participate in
+the first Cartesian product.
+
+b) Draw the tree derived from the canonical tree by moving the selection 
+operations as
+far down the tree as possible.
+Hint: Remember that the  SQL SELECT keyword refers to the projection 
+operation, not to
+the real selection operations!
+
+c) Draw the tree derived from the tree in b) by combining selection and 
+Cartesian products into EQUI-JOINs.
+
+d) Draw the tree derived from the tree in c) by moving the projection 
+operations down the tree as far as possible.
+
+
+
+Question 3 [50 marks]
+Suppose an instance to the library data base in Question 2 has the 
+following characteristics:
+
+        600 Borrower records, each of 1O0 bytes
+        1500 Loan records, each of 20 bytes.
+        Block size: 500 bytes.
+
+Suppose we want to compute the natural join of Borrower and Loans
+Hint: It is not necessary to remember formulae to answer this question.  
+It is necessary to understand how the operations function.
+
+a) Compute the "join selectivity" of the operation.
+
+b) How big is the result and hence how many block accesses are required 
+to output the result.
+
+c) Suppose we compute the result by the "nested loop" method, with the 
+Loans records in the outer loop.  How many block accesses are required 
+to compute the result (as distinct from outputting it).
+
+d) Now suppose the Borrower file is indexed on Card_Num and that there 
+are 4 levels in the indexing B-tree.  Again compute the number of block 
+accesses required to compute the result, assuming that we use that index 
+to our advantage.
+
+
+
+Question 4 [50 marks]
+Consider the set of dependencies:
+
+        F= {A-->B, A-->C, B -->A, B-->C, C-->A}
+
+a) There are redundant dependencies in this set.  Minimize F by 
+identifying redundant dependencies and removing them.  It is sufficient 
+to write down the minimal set.
+
+b) In fact there are two possible minimal sets with respect to F. 
+Compute the second one.
+
+c) Show formally that the smallest of the minimal sets you have just 
+computed is equivalent to F
+
+
+
+Question 5 [50 marks] Consider the set of dependencies:
+
+        F = {AB --> C, D --> EG, C --> A, BE --> C,
+                BC --> D, CG --> BD, ACD --> B, CE --> AG}
+
+a) Look at each of the left hand sides. Which of the left hand sides are 
+super-keys? In each case justify your contention.
+
+b) Which of these super-keys are keys (minimal)? In each case justify 
+your contention.
+
+
+
+Question 6 [50 marks]
+
+a) Consider the following definition of Second Normal Form:
+
+A relational schema is in 2NF if for all non-trivial X --> A in F+, 
+either A is prime or X is not a proper sub-set of any key.
+
+Is this definition equivalent to the one in our text in terms of partial 
+dependencies? Why/why not?
+
+Hint: You are being asked to define partial dependency and to compare 
+that definition with the one above.
+
+b) Consider the relational schema with attributes: S (store), D 
+(department), I (item) and M (manager), and with dependencies: SI --> D 
+and SD --> M.
+
+Compute the set of all keys for SDIM
+
+c) Use the above definition to show that SDIM is in 2NF.
+
+d) Show that SDIM is/is not in third normal form.
+Hint: You need to state the definition of 3NF.
+
+
+
+Question 7 [50 marks]
+
+Consider the relational schema with attributes ABCD and dependencies:
+
+        F = {AB-->C, A-->D, BD>C).
+
+a) Minimize F.
+
+b) Why is the schema not in 3NF?
+
+c) Decompose into 2 relations and project dependencies onto the 
+decomposition so that the result is in 3NF and dependencies are 
+preserved.
+
+d) Justify the claim for 3NF
+
+e) Justify that dependencies are preserved.
+
+
+
+Question 8 [50 marks]
+
+This question refers to the network model.
+
+Assume we have defined record types:      You may want to use:
+
+        Dept (Dname, Dept#)                     FIND FIRST <record type> 
+        Suppliers (Sname, Saddr)                FIND NEXT <record type> WITHIN <set type>
+        Items (Iname, Item#)                    FIND OWNER <set type> 
+        Orders (O#, Date)                               GET <record type>
+        Customers (Cname, Caddr, Balance)
+
+a) Consider the following network diagram.  Reverse engineer by deducing 
+the Entity - Relationship diagram from which the network was derived.  
+Be sure to make it clear which relationships in the E-R diagram are 
+1:many and which are many:many.  Do not include attributes.
+
+                                    SUPPLIERS
+                                        ||
+                                        || O_Supplier
+                                        \/
+                                      OFFERS
+                                        /\
+                                        || O_Item
+                          Carries       ||
+                DEPTS --------------> ITEMS
+                                        ||
+                                        || E_Item
+                                        \/
+                                      ENTRIES
+                                        /\
+                                        || E_Order
+                                        ||
+                                      ORDERS
+                                        /\
+                                        || Placed_By
+                                        ||
+                                     CUSTOMERS
+
+b) Write a code fragment, using embedded network DML, that computes the query:
+        List all items carried by dept. #"1234".
+
+c) Write a code fragment, using embedded network DML, that computes the query:
+        Give the name of the customer who placed order # "432l".
+
+d) Write a code fragment, using embedded network DML, that computes the query:
+        List all the items that are part of order # "1111".
+
+
+
+Question 9 [50 marks]
+
+Consider the ways in which the network data type "set" can be 
+represented.
+
+a) Under what circumstances would a representation that depends on 
+physical contiguity of records be useless?
+
+b) Under what circumstances would representation by "linked lists" lead 
+to particularly slow execution of "set" operations?
+
+c) Why must there always be situations in which the problems in b) are 
+unavoidable?
+
+d) Explain why we do not permit an instance of a record to be a member 
+of two instances of the same set type, simultaneously.
+
+
+
+Question 10 [50 marks]
+
+Consider the problem of setting up a data base containing information 
+about the students, the courses they have taken and the grades obtained. 
+For each student we want to record the name and address of the student. 
+For each course we want to record the course name and the offering 
+department.
+
+We have three models that could be used (relational, network and 
+hierarchical) and various possibilities within each model.  No design 
+will be perfect from all points of view. Here are some possible 
+imperfections:
+
+A. The inability, given a student, to determine which courses the 
+student has taken, without going through most of the data base.
+
+B. The inability, given a course, to determine which students took that 
+course without going through most of the data base.
+
+C. The inability to determine, by any means, the grade a given student 
+obtained for a given course.
+
+D. Redundancy such as repetition of name-department facts for courses, 
+student-course-grade facts, or name-address facts for students.
+
+For each of the plausible schemes below, say which, if any, of these 
+deficiencies apply. It is sufficient to list the relevant letters A - D.
+
+a) The relational scheme (Course, Dept, Student, Address, Grade)
+
+b) The relational scheme (Course, Dept, Grade) and (Course, Student, 
+Address), with an index on course in both relations.
+
+c) A network with record types: Course (Name, Dept) and Sag (Name, 
+Address, Grade) and a "set" with owner Course and members Sag records. 
+The meaning of the set is that the member students took the owner course 
+and obtained the given grade for the course.
+
+d) The hierarchy defined by the following diagram.
+
+                COURSE(NAME, DEPT)
+                        |
+                        |
+              STUDENT(NAME, ADDR, GRADE)
+
+e) The hierarchy defined by the following diagram.
+
+                   COURSE(NAME, DEPT) <--+
+                        |                |
+                        |                | (dotted line)
+                  STUDENT(NAME, ADDR)    |
+                  /                 \    |
+                 /                   \   |
+              GRADE                 *COURSE
+

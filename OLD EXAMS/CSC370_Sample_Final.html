@@ -1,0 +1,1084 @@
+<html>
+
+<PRE>
+
+
+
+
+
+
+
+                               UNIVERSITY OF VICTORIA
+
+                               ---------- -- --------
+
+                                Computer Science 370 
+
+                                -------- ------- ---
+
+
+
+
+
+          Instructions:
+
+          ------------
+
+          ALL QUESTIONS MUST BE ANSWERED ON THE EXAMINATION  PAPER  IN  THE
+
+          SPACE PROVIDED.
+
+          This exam consists of 14 pages + cover.
+
+          This is a closed book exam.
+
+
+
+
+
+
+
+          Question 1  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          Suppose we want to compute the equi-join of relations R and S  on
+
+          the attributes R.r and S.s.
+
+
+
+          a)   Suppose both relations are represented by sequential  files,
+
+                                                         ----------
+
+               with  no known order on the records.  Outline in pseudo-code
+
+               a procedure which computes the equi-join.
+
+     
+
+               for all tuples tR in R do
+
+               for all tuples tS in S do
+
+                   if tR.r = tS.s
+
+                   then output tR join tS
+
+
+
+
+
+          b)   Suppose that there are 100 tuples in the  relation  R,  each
+
+               represented by records of 100 bytes.
+
+               Suppose there are 10000  tuples  in  the  relation  S,  each
+
+               represented by records of 800 bytes.
+
+               Suppose each disc block  contains  2000  bytes  and  that  a
+
+               buffer  of  11  blocks is available for holding data read in
+
+               from secondary memory.
+
+
+
+               Your procedure in part a) should contain 2  loops.   Compute
+
+               the  number of block accesses (for reading only) required to
+
+                                              --- ------- ----
+
+               compute the join if the outer loop constitutes the  scan  of
+
+               R, and if the buffer is used most effectively.
+
+
+
+                   10^2 x 10^2
+
+               R = -----------   = 5 blocks
+
+                   2 x 10^3
+
+
+
+                   10^4 x 8 x 10^2
+
+               S = ---------------    = 4000 blocks
+
+                      2 x 10^3 
+
+
+
+               So read 5 R blocks into the buffer - leave 6.
+
+               Then just read through S.
+
+               Total 5 + 4000 block accesses.
+
+
+
+
+
+          c)   Suppose that S is represented by an indexed file, and that s
+
+                                                   -------
+
+               is the indexing attribute.
+
+               Outline in pseudo-code a procedure which computes the  equi-
+
+               join.
+
+
+
+               for all tuples in R do
+
+                   use R.r to locate records in S that match S.s
+
+                   output join of matching records
+
+
+
+
+
+          d)   Why is this second method  likely  to  be  superior  to  the
+
+               first?
+
+
+
+               First method requires time proportional to |R| x |S|.
+
+               Second method requires time proportional to |R| x time to
+
+               index into S.  The latter should be no worse than logarithmic
+
+               in |S|.
+
+
+
+
+
+          Question 2  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          Consider the SQL statement:
+
+
+
+                    SELECT S.Student Number, N.Course Number
+
+                                    -                -
+
+                    FROM Student S, Grade Report G, Section N
+
+                                         -
+
+                    WHERE S.Major = "CS" and G.Grade = "A" and N.year = 1994
+
+
+
+
+
+          a)   Draw the "canonical" parse tree for the evaluation  of  this
+
+               statement.
+
+
+
+                             PI 
+
+                               S.stud_number, N.course_number
+
+                              |
+
+                              |
+
+                             SIGMA
+
+                                  S.major = "CS" and G.grade = "A" and N.year = 1994
+
+                              |
+
+                              X
+
+                             / \
+
+                            /   \
+
+                           X     Section
+
+                          / \
+
+                         /   \
+
+                   Student   Grade_Report
+
+
+
+          b)   Draw the tree derived from the canonical tree by moving the 
+
+               selection operations as far down the tree as possible.
+
+               Hint: Remember that that the SQL SELECT  keyword  refers  to
+
+               the  projection  operation, not to the real selection opera-
+
+               tion!
+
+
+
+
+
+                             PI 
+
+                               S.stud_number, N.course_number
+
+                              |
+
+                              |
+
+                              |
+
+                              X
+
+                             / \
+
+                            /   \
+
+                           /  SIGMA
+
+                          /        year = 1994
+
+                         /         |
+
+                         X       Section
+
+                        / \
+
+                       /   \
+
+              SIGMA            SIGMA
+
+                 S.major = "CS"     G.grade = "A"
+
+                     |             |
+
+                   Student     Grade_Report
+
+
+
+
+
+
+
+          c)   Draw the tree derived from the tree in B) by moving the pro-
+
+               jection operations down the tree as far as possible.
+
+
+
+                              X
+
+                             / \
+
+                            /   \
+
+                           /  PI
+
+                          /     course_number
+
+                         /      |
+
+                        /     SIGMA
+
+                       /           year = 1994
+
+                      /           |
+
+                     X           Section
+
+                    / \
+
+                   /   \
+
+              PI        \
+
+                stud_number
+
+              |           \
+
+              |            \
+
+          SIGMA            SIGMA
+
+               S.major = "CS"   G.grade = "A"
+
+                   |             |
+
+                Student     Grade_Report
+
+
+
+
+
+
+
+          Question 3  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          Suppose we want to compute the equi-join of relations R and S  on
+
+          the attributes R.r and S.s.
+
+          Let @b sub R@ and @b sub S@ be the number of disc blocks in R and
+
+          S respectively.
+
+          Let @j sub s@ be the "join selectivity"  of  the  equi-join  just
+
+          specified.
+
+          Let @bfr sub RS@ be the blocking factor for the file representing
+
+          the result of the computation.
+
+
+
+          a)   Define "join selectivity" in terms of the size of the Carte-
+
+               sian  product of the inputs versus the size of the result of
+
+               the computation.
+
+
+
+               jS = |R join S| / |R X S|
+
+
+
+          b)   Suppose that the join  is  computed  by  the  "nested  loop"
+
+               method, using R for the outer loop, and assume that 2 memory
+
+               buffers are used.  Our text gives the following formula  for
+
+               the number of block accesses made.
+
+
+
+               Explain, briefly but clearly, the significance  of  each  of
+
+               the  three  items  (i.e., the items separated by + signs) in
+
+               the formula.
+
+
+
+
+
+               b sub r + (b sub r * b sub s) + ((j sub s * |R| * |S|)/bfr sub RS
+
+               -------    -----------------      ------------------------------
+
+                 1                2                            3
+
+
+
+               1: Every record in R must be read in sequence, therefore bR
+
+                  block accesses are required.
+
+
+
+               2: Every block of R records require a complete scan of S records.
+
+                  Hence bR * bS block accesses on S.
+
+
+
+               3: jS * |R| * |S| = number of records in the output.
+
+                  Divide by blocking factor and we get the number of block
+
+                  accesses to write out the result.
+
+
+
+
+
+
+
+          c)   Suppose the join is computed by the "sort -  merge"  method,
+
+               and  that  a preliminary sort is indeed necessary.  Our text
+
+               gives the following formula for the number of block accesses
+
+               made.
+
+
+
+               k*((b sub R * log sub 2 b sub R ) + b sub S * log sub 2 b sub S )) 
+
+                   ---------------------------     ---------------------------
+
+                               1                                2
+
+
+
+               + b sub R + b sub S + ((j sub s * |R| * |S|)/bfr sub RS)
+
+                 --------  -------     -------------------------------
+
+                     3        4                       5
+
+
+
+               Explain, briefly but clearly, the significance  of  each  of
+
+               the four parts of the formula.
+
+
+
+               1 & 2: block accesses to sort the files.
+
+                      k is some constant, about 1.5, depending on sorting algorithm.
+
+                      Of course the equation is useless without an estimate for k.
+
+                
+
+               3: block accesses to scan R   
+
+
+
+               4: block accesses to scan S
+
+
+
+               5: writing out the result, as under b).
+
+
+
+
+
+
+
+          Question 4  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          a)   Define "the closure F+ of a set of dependencies F"
+
+
+
+               F+ = {X --> Y | X --> y can be inferred from F}
+
+
+
+
+
+          b)   Define "the closure X + of a set of attributes X  with
+
+               respect to a set of dependencies F".
+
+
+
+               X+ = {A | X --> A is a member of F+}
+
+
+
+          c)   Compute {CE}+ with respect to the set  of  depen-
+
+               dencies:
+
+
+
+               AB --> C        D --> EG
+
+               C --> A         BE --> C
+
+               BC --> D        CG --> BD
+
+               ACD --> B       CE --> AG
+
+
+
+
+
+               {C, E}+ = {C, E, A, G, B, D}
+
+
+
+          d)   Suppose we wish to answer (in general) the question: Is  the
+
+               dependency X --> Y in F+.
+
+               Is it necessary to compute F+?  Why/not ?
+
+
+
+               It is not necessary because X --> Y is in F+ iff
+
+               Y is a subset of X+.
+
+
+
+          d)   Why are we pleased about the answer to c)?
+
+
+
+               Because it can be very time consuming to compute F+, whereas
+
+               X+ is relatively quick to compute.
+
+
+
+
+
+          Question 5  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          a)   Suppose we try to put some relation @R@ with its  associated
+
+               set  of  dependencies  F into some normal form by decomposi-
+
+                                                                 ----------
+
+               tion.  Name the 2 properties of the decomposition which  are
+
+               ----
+
+               essential.
+
+
+
+               Dependency preservation, lossless join.
+
+
+
+          b)   For each property explain why it is essential.
+
+
+
+               If dependencies are not preserved, then the decomposion permits
+
+               values that we already have determined are invalid.
+
+
+
+               If not lossless join then "spurious", i.e., invalid tuples
+
+               can be implied by joins on the decomposed tables.
+
+
+
+          c)   Suppose the relation R = {A,B,C,D} is  associated  with  the
+
+               dependency set:
+
+                        F = {A --> B, B --> C, C --> D, D --> A}.
+
+               Consider the decomposition: R1 = {A,B}, R2 = {B,C} and R3  =
+
+               {C,D}.
+
+               Compute covers for the  corresponding  projected  dependency
+
+               sets F1, F2, and F3.
+
+               Hint: Right, this is not quite as simple as it looks.
+
+                                        -----
+
+
+
+               F1 = {A --> B, B --> A}
+
+               F2 = {B --> C, C --> B}
+
+               F3 = {C --> D, D --> C}
+
+
+
+               Note that the second item in each set is not explicit in F.
+
+               But they are certainly in F+, and so must be projected onto
+
+               the decomposed tables.
+
+
+
+          d)   Show that the decomposition either is or is  not  dependency
+
+               preserving.
+
+
+
+               Note that F1 U F2 U F3 implies D --> A, by transitivity.
+
+               Therefore nothing is lost from F.  Therefore the decomposition is
+
+               dependency preserving.
+
+
+
+
+
+
+
+          Question 6  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          a)   What does it mean for two sets of dependencies F and G to be
+
+               equivalent?
+
+               ----------
+
+
+
+               Answer: F and G are equivalent iff ......
+
+
+
+               Answer: F and G are equivalent iff F+ = G+
+
+                       or equivalent statement.
+
+
+
+
+
+
+
+          b)   Prove that the following 2 dependency sets either are or are
+
+               not equivalent.
+
+
+
+               --Left--        --Right-
+
+
+
+               AB --> C        AB --> C
+
+               C --> A         C --> A
+
+               BC --> D        BC --> D
+
+               CD --> B        D --> E
+
+               D --> E         D --> G
+
+               D --> G         BE --> C
+
+               BE --> C        CG --> B
+
+               CG --> D        CE --> G
+
+               CE --> G
+
+
+
+               Hint: First try to show that anything in Left is in the clo-
+
+               sure of Right, and then the reverse.
+
+
+
+               We note that there are only 3 differences to be accounted for.
+
+
+
+               We need to show that CD --> B is in Right+, so we compute
+
+               {CD}+ wrt Right = {C, D, A, E, G, B ..... } and we are
+
+               done as soon as we find B.
+
+               
+
+               We need to show that CG --> D is in Right+, so we compute
+
+               {CG}+ wrt Right = {C, G, A, B, C, D ..... } and we are
+
+               done as soon as we find D.
+
+
+
+               We need to show that CG --> B is in Left+, so we compute
+
+               {CG}+ wrt Left = {C, G, A, D, B  ..... } and we are
+
+               done as soon as we find B.
+
+
+
+
+
+
+
+          Question 7  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          a)   Using "dependency" terminology  define  super-key  in  one
+
+               statement:
+
+
+
+               The set X is a super-key iff X --> all attributes.
+
+
+
+          b)   If X is a super-key, what is the further  requirement  for
+
+               X to be a @key@?
+
+
+
+               The set X must also be minimal with respect to the property
+
+               in a).
+
+
+
+          c)   Given some X and a set of dependencies F, how would  you
+
+               quickly test to see if X is a super-key?
+
+
+
+               Compute X+.  X is a super-key iff X+ = {all attributes}.
+
+
+
+          e)   If X is a super-key, how would you go about testing to see
+
+               if it is a key?
+
+
+
+               for all A in X compute {X - A}+.
+
+               if {X - A}+ = {all attributes} for some A,
+
+               then X is not minimal and so is not a key.
+
+
+
+          d)   The last step in Algorithm 13.4 (Decomposition of R, F  into
+
+               3NF) is:
+
+               "if none of the relation schemas (resulting from the  decom-
+
+               position so far) contains a key of R, then .... "
+
+               How would you go about testing this condition?  Do we need a
+
+               list of all keys?
+
+               
+
+
+
+               No, we do not need a list of all keys.
+
+               Let Ri be any of the decomposed relations.
+
+               Then Ri "contains a key of R" iff Ri is a superkey.
+
+               But we can check this as under c) by computing Ri+
+
+               wrt the original set of dependencies.
+
+
+
+
+
+          Question 8  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          a)   Give the general definition of "second normal form".
+
+
+
+               No non-prime attribute is partially dependent on any key.
+
+
+
+          b)   Point out why the following relation schema  and  associated
+
+               dependencies is not in second normal form.
+
+
+
+               R =     {Stud#, Names, Grade, Course#, Prof}
+
+               F =     {Stud#, Course# --> everything,
+
+                       Stud# --> Names,
+
+                       Course# --> Prof}
+
+
+
+               o the only key is {stud#, course#}
+
+   
+
+               o names is non-prime (so is prof).
+
+
+
+               o names is partially dependent on the key (so is prof).
+
+
+
+
+
+          c)   Decompose the schema so that the result is in second  normal
+
+               form.
+
+
+
+               R1 = {stud#, names}
+
+               R2 = {stud#, course#, grade}
+
+               R3 = {course#, prof}
+
+
+
+
+
+          d)   Justify your claim that the result is in second normal form.
+
+
+
+               We must project dependencies and recompute the keys.
+
+
+
+               F1 = {stud# --> names}, key = stud#
+
+               F2 = {stud#, course# --> grade}, key = {stud#, course#}
+
+               F3 = {course# --> prof} key = course#
+
+
+
+               Clearly no partial dependencies remain.  In fact each
+
+               decomposed relation is in BCNF.
+
+
+
+
+
+          Question 9  [50 marks]
+
+          -------- -   -- -----
+
+
+
+          a)   Consider  the  following  entity  -  relationship   diagram.
+
+               Translate  it  literally  and  without  modification into an
+
+               equivalent diagram using the network model, ( i.e.,  express
+
+                          -------
+
+               it as record types combined into DBTG "set"s).
+
+
+
+
+
+               
+
+                Sorry, can't do the diagram here.  A copy of this question
+
+                is on display outside my office.
+
+
+
+          b)   Outline in a few words the essential functions of  the  net-
+
+               work statements;
+
+
+
+               FIND sets up pointers in the currency pointer area
+
+
+
+
+
+               GET transfers data from the data base to the user work area
+
+
+
+
+
+               STORE transfers data from the user work area to the data base.
+
+
+
+          c)   Using appropriate  FIND  and  GET  statements,  embedded  in
+
+               pseudo-code,  show  how to code the query: "all cities lived
+
+               in at some time by (some) Henry Irving".
+
+
+
+
+
+               See display outside my office.
+
+
+
+          d)   Using appropriate FIND, MODIFY and STORE statements,  embed-
+
+               ded  in pseudo-code, show how to insert the following infor-
+
+               mation into the data base: Henry Irving,  (SIN  =  "123456")
+
+               has just moved from Duncan to Sidney-by-the-Sea.
+
+
+
+               Hint: Remember that "MODIFY" lets you change a value  in  an
+
+               existing record, rather than creating a new one.
+
+
+
+               See display outside my office.
+
+
+
+
+
+
+
+          Question 10  [50 marks]
+
+          -------- --   -- -----
+
+
+
+          a)   One-way, circular linked lists are "typical" representations
+
+               of network "set"s.  Which basic "set" operation(s) are effi-
+
+               ciently computed using this  representation,  (where  "effi-
+
+               ciently" means approximately in constant time")?
+
+
+
+
+
+               GET first member, GET next member
+
+
+
+          b)   Which basic "set" operation(s) are not efficiently  answered
+
+               using  this  representation?   What  would be the worst case
+
+               time complexities of computing these operations?
+
+
+
+               GET owner -- time proportional to number of members
+
+
+
+               GET previous -- time proportional to number of members
+
+
+
+               GET last -- time proportional to number of members
+
+
+
+               Insert and delete also.
+
+
+
+
+
+          c)   What modifications to the representations are often used  to
+
+               improve these results to constant time?
+
+
+
+               Pointers from member to owner
+
+               Two way pointers
+
+
+
+          d)   What price is paid for these improvements in execution time?
+
+
+
+               Extra space (memory) for pointers.
+
+
+
+          d)   If the member records of a given instance of a "set" are not
+
+               necessarily  physically adjacent in memory, why might "navi-
+
+               gation" through the data base be "slow".
+
+ 
+
+               Since the network model is a "one record at a time" system,
+
+               each GET may require a separate block access.
+
+               So access time per record can be slow.
+
+</html>
+
+</PRE>
+

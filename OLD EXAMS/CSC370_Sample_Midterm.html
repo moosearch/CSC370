@@ -1,0 +1,590 @@
+<html>
+
+<PRE>
+
+
+
+          CSC 370 Mid-Term Exam   -- Total 200 points 
+
+
+
+
+
+          Question 1  [40 marks]
+
+          -------- -   -- -----
+
+
+
+          Draw a suitable Entity - Relationship diagram for  modelling  the
+
+          following reality:
+
+
+
+          o    Lawyers have a name, home address  and  a  legal  speciality
+
+               (e.g. corporate law)
+
+
+
+          o    Law firms have a name, address,  phone  number  and  a  head
+
+               partner
+
+
+
+          o    All lawyers work for exactly one firm, and  all  firms  have
+
+               some lawyers working for them.
+
+
+
+          o    Clients have a name, address and phone number.
+
+
+
+          o    A client will have $>=$ 1 lawyer looking  after  them  (they
+
+               may  have  more  than  one  problem),  but a lawyer could be
+
+               without clients.
+
+
+
+          o    A client may (but not necessarily) have to appear  in  court
+
+               one  of more times.  If so, each appearance is scheduled for
+
+               a specific date,  and  will  require  the  attendance  of  a
+
+               specific lawyer.
+
+
+
+          Make clear in your  diagram  the  distinction  between  entities,
+
+          attributes and relationships.
+
+          Mark:
+
+
+
+          o    whether a relationship is 1:1 or many:1 or many:many.
+
+
+
+          o    keys
+
+
+
+          o    relationship participation as total/partial.
+
+
+
+          Assume, for simplicity, that all names are unique.
+
+
+
+
+
+
+
+
+
+          CSC 370 Mid-Term Exam                                 Page 2 of 5
+
+
+
+
+
+          Question 2  [40 marks]
+
+          -------- -   -- -----
+
+
+
+          Consider the following  relational schema which  is  intended  to
+
+          correspond to the situation described in Question 1.
+
+          Keys are in italics.
+
+                      -------
+
+
+
+          LAWYER (name, address, speciality, F name)
+
+                  ----                        -
+
+
+
+          FIRM (name, address, phone, head)
+
+                ----
+
+
+
+          CLIENT (name, address, phone)
+
+                  ----
+
+
+
+          SERVES (L name, C name)
+
+                  ------  ------
+
+
+
+          COURT (C name, L name, date)
+
+                  -       -
+
+
+
+
+
+          a)   Which relations are intended to represent entities?
+
+
+
+
+
+               Lawyer, Client, Firm
+
+
+
+
+
+
+
+
+
+          b)   Which relations are intended to represent relationships?
+
+
+
+
+
+               Serves, Court
+
+
+
+
+
+
+
+
+
+          c)   Why is there no relation for the relationship  ("works for")
+
+                                                                     -
+
+               between Firms and Lawyers?
+
+
+
+
+
+               Because it is a 1 : many relationship and can absorbed into the 
+
+               relation Lawyer.
+
+               This is more economical than setting up a separate table.
+
+
+
+
+
+
+
+
+
+          d)   The key for the COURT relation has not been defined.  If  we
+
+               want  to  leave  open  the possibility that the client could
+
+               appear in court more than once on the  same  day,  but  only
+
+               with a different lawyer, what should the key be?
+
+
+
+
+
+
+
+               We need all 3 attributes to make a (unique of course) key.
+
+
+
+
+
+
+
+          CSC 370 Mid-Term Exam                                 Page 3 of 5
+
+
+
+
+
+          Question 3  [40 marks]
+
+          -------- -   -- -----
+
+
+
+
+
+          LAWYER (name, address, speciality, F name)
+
+                  ----                        -
+
+
+
+          FIRM (name, address, phone, head)
+
+                ----
+
+
+
+          CLIENT (name, address, phone)
+
+                  ----
+
+
+
+          SERVES (L name, C name)
+
+                  ------  ------
+
+
+
+          COURT (C name, L name, date)
+
+                  -       -
+
+
+
+          Give Relational Algebra expressions, based on  the  same  schema,
+
+          for the following queries:
+
+
+
+
+
+          a)   List the names of lawyers who specialise in "company law".
+
+
+
+
+
+               PI     (RHO                          (Lawyer))
+
+                 name     speciality = "company law"
+
+
+
+
+
+
+
+
+
+          b)   List the names of clients who have "Jim Boothroyd" as  their
+
+               lawyer.
+
+
+
+               PI      (RHO                    (Serves))
+
+                 C_name    L_name = "Jim Boot"
+
+
+
+          c)   List the names of clients whose lawyers work for "Shadrock &
+
+               Squisham".
+
+
+
+               PI      (RHO                       (Lawyer  JOIN              Serves))
+
+                 C_name    Fname = "Shad & Squish"             name = L_name
+
+
+
+          d)   List the names of people who either are the head of a  firm,
+
+               or are lawyers and are due in court on Feb. 28 1995.
+
+
+
+
+
+               PI    (Firm) UNION PI      (RHO                     (Court)) 
+
+                 head               L_name    date = "Feb. 28 1995"
+
+
+
+
+
+          e)   List the names of all the clients who do NOT  have  a  court
+
+               date.
+
+ 
+
+               PI    (Client) - PI      (Court)
+
+                 name             C_name
+
+
+
+
+
+
+
+          Question 4  [40 marks]
+
+          -------- -   -- -----
+
+
+
+
+
+          LAWYER (name, address, speciality, F name)
+
+                  ----                        -
+
+
+
+          FIRM (name, address, phone, head)
+
+                ----
+
+
+
+          CLIENT (name, address, phone)
+
+                  ----
+
+
+
+          SERVES (L name, C name)
+
+                  ------  ------
+
+
+
+          COURT (C name, L name, date)
+
+                  -       -
+
+
+
+          Give SQL expressions, based on the  same  schema,  for  the  same
+
+          queries.  Note that it may be neater to string the expression out
+
+          on one line, no need to spread it over several lines.
+
+
+
+
+
+          a)   List the names of lawyers who specialise in "company law".
+
+
+
+               SELECT name FROM Lawyer WHERE speciality = "company law"
+
+
+
+
+
+          b)   List the names of clients who have "Jim Boothroyd" as  their
+
+               lawyer.
+
+
+
+               SELECT C_name FROM Serves WHERE L_name = "Jim Boot"
+
+
+
+
+
+          c)   List the names of clients whose lawyers work for "Shadrock &
+
+               Squisham".
+
+
+
+               SELECT S.name FROM Serves S, Lawyer L WHERE S.L_name = L.name 
+
+                                                     and L.Fname = "Shad & Squish"
+
+
+
+
+
+          d)   List the names of people who either are the head of a  firm,
+
+               or are lawyers and are due in court on Feb. 28 1995.
+
+
+
+
+
+               SELECT head FROM Firm
+
+               UNION
+
+               SELECT L_name FROM Court WHERE date = "Feb. 28 1995"
+
+
+
+
+
+          e)   List the names of all the clients who do NOT  have  a  court
+
+               date.
+
+
+
+               SELECT name FROM Client
+
+               EXCEPT
+
+               SELECT C_name FROM Court
+
+
+
+
+
+
+
+          Question 5  [40 marks]
+
+          -------- -   -- -----
+
+
+
+
+
+          LAWYER (name, address, speciality, F name)
+
+                  ----                        -
+
+
+
+          FIRM (name, address, phone, head)
+
+                ----
+
+
+
+          CLIENT (name, address, phone)
+
+                  ----
+
+
+
+          SERVES (L name, C name)
+
+                  ------  ------
+
+
+
+          COURT (C name, L name, date)
+
+                  -       -
+
+
+
+          Give tuple-calculus expressions, based on the  same  schema,  for
+
+          the same queries:
+
+
+
+
+
+          a)   List the names of lawyers who specialise in "company law".
+
+
+
+               {t.name | Lawyer(t) and t.speciality = "company law"}
+
+
+
+
+
+
+
+          b)   List the names of clients who have "Jim Boothroyd" as  their
+
+               lawyer.
+
+
+
+               {t.C_name | Serves(t) and L_name = "Jim Boot"}
+
+
+
+
+
+          c)   List the names of clients whose lawyers work for "Shadrock &
+
+               Squisham".
+
+
+
+               {t.C_name | Serves(t) and (there exists s)(Lawyer(s) and t.L_name =
+
+                                          s.name and s.Fname = "Shad & Squish"}
+
+
+
+
+
+          d)   List the names of people who either are the head of a  firm,
+
+               or are lawyers and are due in court on Feb. 28 1995.
+
+
+
+               We want a union.  Syntax will require either a renaming of
+
+               attributes or separate computation of the 2 sets.
+
+
+
+               S :=  {t.head | Firm(t)};
+
+               T :=  {t.L_name | Court(t) and t.date = "Feb. 28 1995"}
+
+                     {t | S(t) or T(t)}
+
+
+
+          e)   List the names of all the clients who do NOT  have  a  court
+
+               date.
+
+
+
+               {t.name | Client(t) and (there does not exist s)(Court(s) and t.name
+
+                                                                = s.C_name)}
+
+</html>
+
+</PRE>
+

@@ -1,0 +1,1785 @@
+<HTML>
+
+
+
+
+
+<HEAD>
+
+
+
+
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0z">
+
+
+<TITLE>Untitled</TITLE>
+
+
+
+
+
+</HEAD>
+
+
+
+
+
+<BODY>
+
+
+
+
+
+<P>
+
+
+<STRONG>C Sc 370 Course Notes . . . </STRONG><I>Last updated October
+
+
+11, 1997<BR>
+
+
+</I>
+
+
+[ <A href="home.htm">TOP </A>] 
+
+
+[ <A href="f370note.htm">UP </A>]
+
+
+[<A href="fe370f95.htm">NEXT </A>] 
+
+
+[ <A href="mt370f97.htm">PREVIOUS </A>] 
+
+
+<HR>
+
+
+
+
+
+<P>
+
+
+<CENTER><B><FONT SIZE=5>UNIVERSITY OF VICTORIA<BR>
+
+
+EXAMINATIONS DECEMBER 1992 <BR>
+
+
+C SC 370-F01: Database Systems <BR>
+
+
+</FONT></B></CENTER>
+
+
+<P>
+
+
+<B>Instructor: J.R. McBride Section: F01<BR>
+
+
+</B>
+
+
+<P>
+
+
+<B>TO BE ANSWERED ON THE PAPER DURATION: 3 HOURS<BR>
+
+
+</B>
+
+
+<P>
+
+
+<TABLE BORDER=1>
+
+
+<TR><TD WIDTH=104><CENTER><B>Question No.</B></CENTER></TD><TD WIDTH=104><CENTER><B>Value</B></CENTER>
+
+
+</TD><TD WIDTH=120><CENTER><B>Mark</B></CENTER></TD><TD WIDTH=104><CENTER><B>Question No.</B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B>Value</B></CENTER></TD><TD WIDTH=120><CENTER><B>Mark</B></CENTER>
+
+
+</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=104><CENTER><B><FONT SIZE=2>1</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>6</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=104><CENTER><B><FONT SIZE=2>2</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>7</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=104><CENTER><B><FONT SIZE=2>3</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>8</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=104><CENTER><B><FONT SIZE=2>4</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>9</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=104><CENTER><B><FONT SIZE=2>5</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>10</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=104><CENTER><B><FONT SIZE=2>30</FONT></B></CENTER>
+
+
+</TD><TD WIDTH=120>.</TD></TR>
+
+
+
+
+
+<TR><TD COLSPAN=6 WIDTH=656>
+
+
+<BR>
+
+
+<B><FONT SIZE=2>TOTAL MARK (300) : FINAL GRADE: </FONT></B>
+
+
+</TD></TR>
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+<P>
+
+
+<B><FONT SIZE=2>INSTRUCTIONS:<BR>
+
+
+1. STUDENTS MUST COUNT THE NUMBER OF PAGES IN THIS EXAMINATION
+
+
+PAPER BEFORE</FONT></B>
+
+
+<P>
+
+
+<B><FONT SIZE=2>BEGINNING TO WRITE, AND REPORT ANY DISCREPANCY
+
+
+IMMEDIATELY TO THE INVIGILATOR.<BR>
+
+
+2. This examination paper consists of 16 pages (including front
+
+
+cover page).<BR>
+
+
+3. Read the instructions on the back page and sign the declaration
+
+
+before beginning to answer the examination.<BR>
+
+
+4. This is a CLOSED BOOK - NO NOTES examination. <BR>
+
+
+5. The use of approved hand held calculators is permitted, but
+
+
+no other equipment is allowed.<BR>
+
+
+6. There are TEN questions, and the marks value for each question
+
+
+is shown in parentheses beside the question. <BR>
+
+
+7. If you need more room for your answers, write on the back of
+
+
+the page and clearly identify the question number. It is in your
+
+
+interest to show all working.<BR>
+
+
+8. Candidates may not leave during the last 15 minutes of the
+
+
+examination and must remain quietly in their seats.<BR>
+
+
+</FONT></B>
+
+
+<P>
+
+
+<B>Question 1 (20 Marks)</B> Answer the following questions with
+
+
+a <B>T</B> if they are <B>true</B> or an <B>F</B> if they are
+
+
+<B>false</B>. Mark your answer clearly in the space provided.
+
+
+You may, if you wish, give a brief explanation of your answer.
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<CENTER><I><B><FONT SIZE=4>The scoring will be as follows: For
+
+
+each correct answer: 2 marks; </FONT></B></I></CENTER>
+
+
+<P>
+
+
+<CENTER><I><B><FONT SIZE=4>For each wrong answer: -1 mark; For
+
+
+no answer: 0 marks.</FONT></B></I><FONT SIZE=4> <BR>
+
+
+</FONT></CENTER>
+
+
+<P>
+
+
+<I><B>Answer</B></I>
+
+
+<P>
+
+
+<I><B>T/F</B></I>
+
+
+<P>
+
+
+<B>a) [ ]</B> <I><B>Spanned records</B></I> can be used to store
+
+
+variable length records because a pointer is placed at the index
+
+
+to point to the blocks where the record is continued. <BR>
+
+
+
+
+
+<P>
+
+
+<B>b) [ ] <I>Weak entity types</I></B><I> </I>may not have any
+
+
+key attributes of their own, and hence may not be able to distinguish
+
+
+between some entities because combinations of values of these
+
+
+attributes are identical.<BR>
+
+
+
+
+
+<P>
+
+
+<B>c) [ ] </B>The <I><B>cardinality ratio</B></I> constraint in
+
+
+an entity-relationship diagram, specifies the number of relationship
+
+
+instances in which an entity can participate.<BR>
+
+
+
+
+
+<P>
+
+
+<B>d) [ ] </B>The <I><B>Cartesian product</B></I> is a binary
+
+
+set operation on relations which do not need to be union compatible,
+
+
+and is used to combine tuples from two relations so that related
+
+
+tuples can be identified.<B> <BR>
+
+
+</B>
+
+
+<P>
+
+
+<B>e) [ ] </B>A <I><B>distributed database system</B></I> can
+
+
+have the actual database, but not the DBMS software, distributed
+
+
+over many widely-dispersed sites connected by a computer network.
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<B>f) [ ] </B>The <I><B>dummy record type</B></I> is a record
+
+
+type that is added to the network model to facilitate the representation
+
+
+of M:N relationships.<BR>
+
+
+
+
+
+<P>
+
+
+<B>g) [ ] </B>A<B> <I>host language</I> </B>is a high-level programming
+
+
+language such as, COBOL, Pascal, PL/I, etc., that is used to hold
+
+
+embedded SQL or other query language commands.<BR>
+
+
+
+
+
+<P>
+
+
+<B>h) [ ] </B>A <I><B>lossless join</B></I> ensures that no spurious
+
+
+tuples are generated when a <I>natural join</I> is applied to
+
+
+relations in a decomposition. The word <I>lossless</I> applies
+
+
+to the loss of information, not the loss of tuples. <BR>
+
+
+
+
+
+<OL>
+
+
+<LI><B>i) [ ] </B>A <I><B>nondense (or sparse) index</B></I> for
+
+
+a file is an index that contains an entry for every data block
+
+
+in the file.<BR>
+
+
+
+
+
+</OL>
+
+
+
+
+
+<P>
+
+
+<B>j) [ ] <I>Indexed sequential access</I></B> is a term used
+
+
+to describe situations where the user wants indexed access to
+
+
+records, and sequential access, ordered by key, on those same
+
+
+records. This is usually implemented by using B+ trees.<BR>
+
+
+
+
+
+<P>
+
+
+<B>k) [ ] </B>A file that has a secondary index on every one of
+
+
+its fields is called a <I><B>fully inverted file.</B></I> Because
+
+
+all indexes are secondary, new records are inserted using a <I>composite
+
+
+primary index.<BR>
+
+
+</I>
+
+
+<P>
+
+
+<B>l) [ ] </B>A functional dependency <I>X Y </I>is a <I><B>partial
+
+
+functional dependency</B></I> if there is some attribute <I>A</I>
+
+
+(that is a member of <I>X</I>) that can be removed from <I>X</I>
+
+
+and the dependency will no longer hold.<BR>
+
+
+
+
+
+<P>
+
+
+<B>m) [ ] </B>A <I><B>repeating group</B></I> in the network model
+
+
+allows the inclusion of a set of composite values for a data item
+
+
+in a single record.<BR>
+
+
+
+
+
+<P>
+
+
+<B>n) [ ] </B>A <I><B>virtual data item</B></I> is stored automatically
+
+
+in a record because it is derived from actual data items using
+
+
+some procedure that is defined specially for that purpose.<BR>
+
+
+
+
+
+<P>
+
+
+<B>o) [ ] </B>An <I><B>Occurrence tree</B></I> is used in the
+
+
+network model to mark the current record types and sets so that
+
+
+they can be updated or deleted quickly by a subsequent command.
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<B>Question 2 (30) Databases and Data Models<BR>
+
+
+</B>
+
+
+<P>
+
+
+<B>a) (10) </B>The database approach to storing data has a number
+
+
+of advantages over the conventional methods, name and explain
+
+
+<I><B>five </B></I>advantages of using the database approach.
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<B>b) (10) </B>Your textbook described eleven classes of jobs
+
+
+associated with the creation, management and usage of databases,
+
+
+name and explain the job function of <I><B>five</B></I> of these
+
+
+jobs. <BR>
+
+
+<BR>
+
+
+<B>c) (7)</B> Explain the <I><B>ANSI/SPARC Architecture </B></I>for
+
+
+database models.<BR>
+
+
+<BR>
+
+
+<B>d) (3)</B> The <I><B>ANSI/SPARC Architecture </B></I>claims
+
+
+to provide <I><B>data independence</B></I>, explain what this
+
+
+means <I>with respect to the management and maintenance of the
+
+
+database</I>.<BR>
+
+
+<BR>
+
+
+<B>Question 3 (30) Database Management Systems (DBMS)<BR>
+
+
+</B>
+
+
+<P>
+
+
+<B>a) (6) </B>In addition to the usual query languages such as
+
+
+SQL, QUEL, etc., many DBMS's offer <I>internal languages </I>for
+
+
+defining the database, name <I><B>three</B></I> such languages
+
+
+and define their function.<BR>
+
+
+<BR>
+
+
+<B>b) (9)</B> The various DBMS's offer a variety of user interfaces,
+
+
+such as a <I>menu-based interface</I>, name and explain<I><B>
+
+
+three</B></I> other types of interfaces commonly available. <BR>
+
+
+
+
+
+<P>
+
+
+<B>c) (9) </B>DBMS's generally provide a number of <I>utilities</I>
+
+
+to be used with the system, name and explain the functions of
+
+
+<I><B>three</B></I> of these<I> utilities.<BR>
+
+
+<BR>
+
+
+</I><B>d) (6) </B>DBMS's can be classified in a number of different
+
+
+ways, for example, <I>hierarchical, network or relational</I>,
+
+
+name and explain <I><B>three</B></I> other ways of classifying
+
+
+a DBMS.<BR>
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<B>Question 4 (30)<BR>
+
+
+</B>
+
+
+<P>
+
+
+Given the data description of the Entity-Relationship Schema of
+
+
+a Pharmacy data model <I><B>described in Page 16 below</B></I>,
+
+
+draw an <I><B>entity-relationship diagram</B></I> of the system.
+
+
+Indicate the keys by <U>underlining</U> them in the diagram and
+
+
+show the cardinality of all relationships.<BR>
+
+
+
+
+
+<P>
+
+
+<B>Question 5 (30)<BR>
+
+
+</B>
+
+
+<P>
+
+
+Given the following Relational Schema for <I>The Uncle Vic Super
+
+
+Burgers</I> company, answer the questions below:<BR>
+
+
+
+
+
+<P>
+
+
+EMPLOYEE
+
+
+<P>
+
+
+<TABLE BORDER=1>
+
+
+<TR><TD WIDTH=66>ENUM</TD><TD WIDTH=72>FNAME</TD><TD WIDTH=72>LNAME
+
+
+</TD><TD WIDTH=44>SIN</TD><TD WIDTH=88>ADDRESS</TD><TD WIDTH=48>SEX
+
+
+</TD><TD WIDTH=96>PAYRATE</TD><TD WIDTH=66>MNUM</TD><TD WIDTH=66>SNUM
+
+
+</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=66><FONT SIZE=2>12231</FONT></TD><TD WIDTH=72><FONT SIZE=2>Mary</FONT>
+
+
+</TD><TD WIDTH=72><FONT SIZE=2>Smith</FONT></TD><TD WIDTH=44><FONT SIZE=2>722-...</FONT>
+
+
+</TD><TD WIDTH=88><FONT SIZE=2>98 Bath St....</FONT></TD><TD WIDTH=48><FONT SIZE=2>F</FONT>
+
+
+</TD><TD WIDTH=96><FONT SIZE=2>8.00</FONT></TD><TD WIDTH=66><FONT SIZE=2>12544</FONT>
+
+
+</TD><TD WIDTH=66><FONT SIZE=2>013</FONT></TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=66><FONT SIZE=2>12544</FONT></TD><TD WIDTH=72><FONT SIZE=2>Bob</FONT>
+
+
+</TD><TD WIDTH=72><FONT SIZE=2>Brown</FONT></TD><TD WIDTH=44><FONT SIZE=2>431-...</FONT>
+
+
+</TD><TD WIDTH=88><FONT SIZE=2>123-432 Elm...</FONT></TD><TD WIDTH=48><FONT SIZE=2>M</FONT>
+
+
+</TD><TD WIDTH=96><FONT SIZE=2>8.50</FONT></TD><TD WIDTH=66><FONT SIZE=2>13421</FONT>
+
+
+</TD><TD WIDTH=66><FONT SIZE=2>013</FONT></TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=66><FONT SIZE=2>13421</FONT></TD><TD WIDTH=72><FONT SIZE=2>Jo</FONT>
+
+
+</TD><TD WIDTH=72><FONT SIZE=2>Jones</FONT></TD><TD WIDTH=44><FONT SIZE=2>921-...</FONT>
+
+
+</TD><TD WIDTH=88><FONT SIZE=2>2 Chestnut...</FONT></TD><TD WIDTH=48><FONT SIZE=2>F</FONT>
+
+
+</TD><TD WIDTH=96><FONT SIZE=2>15.75</FONT></TD><TD WIDTH=66><FONT SIZE=2>15882</FONT>
+
+
+</TD><TD WIDTH=66><FONT SIZE=2>013</FONT></TD></TR>
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+<P>
+
+
+REGION REGION LOCATIONS
+
+
+<P>
+
+
+<TABLE BORDER=1>
+
+
+<TR><TD WIDTH=71>RNAME</TD><TD WIDTH=63>RNUM</TD><TD WIDTH=88>MGRNUM
+
+
+</TD><TD WIDTH=73></TD><TD WIDTH=66>RNUM</TD><TD WIDTH=125>RLOCATION
+
+
+</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=71><FONT SIZE=2>Vancouver</FONT></TD><TD WIDTH=63><FONT SIZE=2>19</FONT>
+
+
+</TD><TD WIDTH=88><FONT SIZE=2>13500</FONT></TD><TD WIDTH=73>
+
+
+</TD><TD WIDTH=66><FONT SIZE=2>19</FONT></TD><TD WIDTH=125><FONT SIZE=2>Vancouver</FONT>
+
+
+</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=71><FONT SIZE=2>VanIsle</FONT></TD><TD WIDTH=63><FONT SIZE=2>20</FONT>
+
+
+</TD><TD WIDTH=88><FONT SIZE=2>15882</FONT></TD><TD WIDTH=73>
+
+
+</TD><TD WIDTH=66><FONT SIZE=2>20</FONT></TD><TD WIDTH=125><FONT SIZE=2>Victoria</FONT>
+
+
+</TD></TR>
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+<P>
+
+
+STORE WORKS_FOR
+
+
+<P>
+
+
+<TABLE BORDER=1>
+
+
+<TR><TD WIDTH=78>SNAME</TD><TD WIDTH=66>SNUM</TD><TD WIDTH=114>SLOCATION
+
+
+</TD><TD WIDTH=66>RNUM</TD><TD WIDTH=54></TD><TD WIDTH=66>WNUM
+
+
+</TD><TD WIDTH=60>SNUM</TD><TD WIDTH=84>HOURS</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=78><FONT SIZE=2>Granville</FONT></TD><TD WIDTH=66><FONT SIZE=2>011</FONT>
+
+
+</TD><TD WIDTH=114><FONT SIZE=2>Granville Island</FONT></TD><TD WIDTH=66><FONT SIZE=2>19</FONT>
+
+
+</TD><TD WIDTH=54></TD><TD WIDTH=66><FONT SIZE=2>12231</FONT>
+
+
+</TD><TD WIDTH=60><FONT SIZE=2>013</FONT></TD><TD WIDTH=84><FONT SIZE=2>56.5</FONT>
+
+
+</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=78><FONT SIZE=2>Cloverdale</FONT></TD><TD WIDTH=66><FONT SIZE=2>013</FONT>
+
+
+</TD><TD WIDTH=114><FONT SIZE=2>Cloverdale Mall</FONT></TD><TD WIDTH=66><FONT SIZE=2>20</FONT>
+
+
+</TD><TD WIDTH=54></TD><TD WIDTH=66><FONT SIZE=2>12544</FONT>
+
+
+</TD><TD WIDTH=60><FONT SIZE=2>013</FONT></TD><TD WIDTH=84><FONT SIZE=2>42.0</FONT>
+
+
+</TD></TR>
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+<P>
+
+
+DEPENDENT
+
+
+<P>
+
+
+<TABLE BORDER=1>
+
+
+<TR><TD WIDTH=64>DNUM</TD><TD WIDTH=76>DNAME</TD><TD WIDTH=50>SEX
+
+
+</TD><TD WIDTH=67>BDATE</TD><TD WIDTH=139>RELATIONSHIP</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=64><FONT SIZE=2>12544</FONT></TD><TD WIDTH=76><FONT SIZE=2>Kathie</FONT>
+
+
+</TD><TD WIDTH=50><FONT SIZE=2>F</FONT></TD><TD WIDTH=67><FONT SIZE=2>12/09/70</FONT>
+
+
+</TD><TD WIDTH=139><FONT SIZE=2>Spouse</FONT></TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=64><FONT SIZE=2>13421</FONT></TD><TD WIDTH=76><FONT SIZE=2>Jo</FONT>
+
+
+</TD><TD WIDTH=50><FONT SIZE=2>F</FONT></TD><TD WIDTH=67><FONT SIZE=2>09/04/89</FONT>
+
+
+</TD><TD WIDTH=139><FONT SIZE=2>Daughter</FONT></TD></TR>
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+<P>
+
+
+<B>a) (10) </B>Given the above relational schema write the <I><B>relational
+
+
+algebra expressions </B></I>that will answer the following queries:
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<B>(i) (3) </B>For every store located in a given region location,
+
+
+for example, &quot;Victoria&quot;, list the store number, the
+
+
+controlling region number, and the region manager's last name
+
+
+and address.<BR>
+
+
+
+
+
+<P>
+
+
+<B>(ii) (3) </B>Find the names of all the employees who work in
+
+
+stores controlled by region 20.<BR>
+
+
+
+
+
+<P>
+
+
+<B>(iii) (4) </B>List the names of employees who have no employees.
+
+
+<BR>
+
+
+<BR>
+
+
+<B>b) (15) </B>Given the above relational schema write the <I><B>SQL
+
+
+commands </B></I>that will answer the following queries:
+
+
+<P>
+
+
+<B>(i) (2) </B>Retrieve the name and address of all employees
+
+
+who work in the <I>VanIsle</I> Region.<BR>
+
+
+<BR>
+
+
+<B>(ii) (3) </B>For every store located in Victoria list the store
+
+
+number, the region number, and the manager's last name and address.
+
+
+<BR>
+
+
+<BR>
+
+
+<B>(iii) (4) </B>Make a list of all region numbers for stores
+
+
+that have an worker or manager called &quot;Smith&quot;.<BR>
+
+
+<BR>
+
+
+<B>(iv) (6) </B>Retrieve the name of each employee who has a dependent
+
+
+with the same first name and sex as the employee.<BR>
+
+
+<BR>
+
+
+<B>c) (5) </B>Given the above relational schema write the <I><B>QUEL
+
+
+commands </B></I>that will list the store number, region number,
+
+
+and the last name and address of the manager of the region.<BR>
+
+
+
+
+
+<P>
+
+
+<B>Question 6 (30)<BR>
+
+
+</B>
+
+
+<P>
+
+
+Given the Entity-Relationship schema <I><B>described in Page 16
+
+
+below</B></I>, describe, by means of a diagram, the <I><B>Hierarchical
+
+
+Model Schema </B></I>that would be required for this data. Indicate
+
+
+the keys by <U>underlining</U> their names. Define any new items
+
+
+that you may use and explain why they are necessary.<BR>
+
+
+
+
+
+<P>
+
+
+<B>Question 7 (30)<BR>
+
+
+</B>
+
+
+<P>
+
+
+Given the Entity-Relationship schema <I><B>described in Page 16
+
+
+below</B></I>, describe, by means of a diagram, the <I><B>Network
+
+
+Model Schema </B></I>that would be required for this data. Indicate
+
+
+the keys by <U>underlining</U> their names. Define any new items
+
+
+that you may use and explain why they are necessary.<BR>
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<B>Question 8 (30)<BR>
+
+
+</B>
+
+
+<P>
+
+
+Given the Entity-Relationship schema <I><B>described in Page 16
+
+
+below,</B></I> describe, by means of a diagram, the <I><B>Relational
+
+
+Model Schema </B></I>that would be required for this data. Indicate
+
+
+the keys by <U>underlining</U> their names. Define any new data
+
+
+items that you may use and explain why they are necessary.<BR>
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<B>Question 9 (30)<BR>
+
+
+</B>
+
+
+<P>
+
+
+Given the Entity-Relationship schema <I><B>described in Page 16
+
+
+below</B></I>, answer the following:<BR>
+
+
+
+
+
+<P>
+
+
+<B>a) (15) </B>Describe the Functional Dependencies that exist
+
+
+in this schema. Indicate whether they are <I>full, partial, transitive,
+
+
+etc.<BR>
+
+
+</I>
+
+
+<P>
+
+
+<B>b) (15) </B>Show how you would structure the tables for this
+
+
+schema in order to bring them into <I>third normal form.<BR>
+
+
+</I>
+
+
+<P>
+
+
+<B>Question 10 (30)<BR>
+
+
+</B>
+
+
+<P>
+
+
+<B>a) (15) </B>Complete the following table of advantages and
+
+
+disadvantages for the three database models:<BR>
+
+
+
+
+
+<P>
+
+
+<TABLE BORDER=1>
+
+
+<TR><TD WIDTH=156><B>Item</B></TD><TD WIDTH=156><B>Hierarchical</B>
+
+
+</TD><TD WIDTH=156><B>Network</B></TD><TD WIDTH=156><B>Relational</B>
+
+
+</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Modeling Power</B></TD><TD WIDTH=156>.</TD>
+
+
+<TD WIDTH=156>.</TD><TD WIDTH=156>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Model Simplicity</B></TD><TD WIDTH=156>.
+
+
+</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Constraints</B></TD><TD WIDTH=156>.</TD>
+
+
+<TD WIDTH=156>.</TD><TD WIDTH=156>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Ease of Mapping </B>
+
+
+<P>
+
+
+<B>from ER Schema</B>
+
+
+</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD>
+
+
+</TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Ease of Schema Modification</B></TD><TD WIDTH=156>.
+
+
+</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Type of Languages</B></TD><TD WIDTH=156>.
+
+
+</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Query Specification</B></TD><TD WIDTH=156>.
+
+
+</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Currency</B></TD><TD WIDTH=156>.</TD><TD WIDTH=156>.
+
+
+</TD><TD WIDTH=156>.</TD></TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Logical Data </B>
+
+
+<P>
+
+
+<B>Independence</B>
+
+
+</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD>
+
+
+</TR>
+
+
+
+
+
+<TR><TD WIDTH=156><B>Inherent Processing</B>
+
+
+<P>
+
+
+<B>Efficiency</B>
+
+
+</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD><TD WIDTH=156>.</TD>
+
+
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+<OL>
+
+
+<LI><B>(15) </B>The new <I><B>British Columbia Freedom of Information
+
+
+and Privacy Act </B></I>and the proposed extension to the <I>municipal
+
+
+government </I>level will influence how databases are used. Discuss
+
+
+the implications of these changes to database designers, administrators,
+
+
+and users.<BR>
+
+
+
+
+
+</OL>
+
+
+
+
+
+<P>
+
+
+<I><B>You may remove this page if you wish... but remove it carefully!</B></I>
+
+
+<P>
+
+
+<B>---------------------------------------------------------------------------------------------------------</B>
+
+
+<P>
+
+
+<CENTER><I><B>(Fold and tear here)<BR>
+
+
+</B></I></CENTER>
+
+
+<P>
+
+
+<CENTER><B><FONT SIZE=4>Entity-Relationship Schema for a Pharmacy
+
+
+Data Model<BR>
+
+
+</FONT></B></CENTER>
+
+
+<P>
+
+
+The following is a data description of an entity-relationship
+
+
+schema for a Pharmacy data model.<BR>
+
+
+
+
+
+<P>
+
+
+<B><FONT SIZE=4>Entities and Attributes:<BR>
+
+
+</FONT></B>
+
+
+<P>
+
+
+<I><B>Drug : </B></I>DName, DCode. The drug name and drug code
+
+
+are a medication prescribed by a physician to a patient. 
+
+
+<P>
+
+
+<I><B>Drug-Brand:</B></I> DbName, DbUsage,DbPrice. A Drug Supplier
+
+
+supplies a given drug under a Drug Brand Name at the unit price
+
+
+in DbPrice, and keeps track of the total year-to-date quantity
+
+
+of that drug used in DbUsage.
+
+
+<P>
+
+
+<I><B>Drug-Supplier:</B></I> DsID, DsName. These are the name
+
+
+and identification number of the company supplying the drug.
+
+
+<P>
+
+
+<I><B>Patient:</B></I> PID, PFName, PLName, PType. The first name,
+
+
+last name, identification number and patient type code of a person
+
+
+receiving treatment.
+
+
+<P>
+
+
+<I><B>Pharmacist: </B></I>PhID,<I><B> </B></I>PhLName, PhFName.
+
+
+The first name, last name and identification number of the pharmacist
+
+
+who is filling prescriptions.
+
+
+<P>
+
+
+<I><B>Physician: </B></I>PyLName, PyFName. The first name and
+
+
+last name of the physician who is issuing (prescribing) the prescriptions.
+
+
+<P>
+
+
+<I><B>Prescription: </B></I>PrID, PrDate, PrDrug, PrQty, PrInstr_Text.
+
+
+The identification (prescription) number, date, drug being prescribed,
+
+
+the quantity being issued, and the instructions for use. <BR>
+
+
+
+
+
+<P>
+
+
+<B><FONT SIZE=4>Relationships:<BR>
+
+
+</FONT></B>
+
+
+<P>
+
+
+A patient can use no or many prescriptions, but a prescription
+
+
+can be issued only to one patient. A prescription cannot exist
+
+
+without a patient.
+
+
+<P>
+
+
+A pharmacist can fill no or many prescriptions, but a prescription
+
+
+can be filled by only one pharmacist.
+
+
+<P>
+
+
+A prescription can exist without a pharmacist because a physician
+
+
+writes a prescription before it is filled.
+
+
+<P>
+
+
+A physician can issue many prescriptions, but a prescription can
+
+
+be issued by only one physician. A prescription cannot exist without
+
+
+a physician.
+
+
+<P>
+
+
+A drug brand can be prescribed by many prescriptions, but a prescription
+
+
+can prescribe only one drug brand. A prescription cannot exist
+
+
+without a drug brand.
+
+
+<P>
+
+
+A drug can be supplied by many drug suppliers, and a drug supplier
+
+
+can supply many drugs. The Drug_Brand entity is the combination
+
+
+of drug and drug supplier.<BR>
+
+
+<BR>
+
+
+
+
+
+<P>
+
+
+<CENTER><B>The End</B> </CENTER>
+
+
+<HR>
+
+
+
+
+
+<P>
+
+
+[ <A href="home.htm">TOP </A>] 
+
+
+[ <A href="f370note.htm">UP </A>]
+
+
+[<A href="fe370f95.htm">NEXT </A>] 
+
+
+[ <A href="mt370f97.htm">PREVIOUS </A>] 
+
+
+<HR>
+
+
+
+
+
+<P>
+
+
+Moderated and managed by J.R. McBride. If you have any contributions,
+
+
+questions or comments please send them to <A HREF="mailto: jmcbride@csc.uvic.ca">jmcbride@csc.uvic.ca </A>.
+
+
+<P>
+
+
+<I>Copyright 1997 J.R. McBride </I>
+
+
+<HR>
+
+
+
+
+
+</BODY>
+
+
+
+
+
+</HTML>
+
+
